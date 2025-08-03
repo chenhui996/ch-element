@@ -1,0 +1,147 @@
+.ch-button {
+  /* 预设 按钮各种状态下的 样式名称 */
+  /* normal 正常状态 */
+  --ch-button-font-weight: var(--ch-font-weight-primary);
+  --ch-button-border-color: var(--ch-border-color);
+  --ch-button-bg-color: var(--ch-fill-color-blank);
+  --ch-button-text-color: var(--ch-text-color-regular);
+  /* hover 悬停状态 */
+  --ch-button-hover-text-color: var(--ch-text-color-primary);
+  --ch-button-hover-border-color: var(--ch-color-primary-light-7);
+  --ch-button-hover-bg-color: var(--ch-color-primary-light-9);
+  /* active 激活状态 */
+  --ch-button-active-text-color: var(--ch-button-hover-text-color);
+  --ch-button-active-border-color: var(--ch-color-primary);
+  --ch-button-active-bg-color: var(--ch-button-hover-bg-color);
+  --ch-button-active-color: var(--ch-text-color-primary);
+  /* disabled 禁用状态 */
+  --ch-button-disabled-text-color: var(--ch-disabled-text-color);
+  --ch-button-disabled-bg-color: var(--ch-fill-color-blank);
+  --ch-button-disabled-border-color: var(--ch-border-color-light);
+
+  --ch-button-outline-color: var(--ch-color-primary-light-5);
+
+  /* --------------- 分割线 --------------- */
+}
+
+.ch-button {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--ch-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--ch-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--ch-button-bg-color);
+  border: var(--ch-border);
+  border-color: var(--ch-button-border-color);
+  border-radius: var(--ch-border-radius-base);
+  padding: 8px 15px;
+  font-size: var(--ch-font-size-base);
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--ch-button-hover-text-color);
+    border-color: var(--ch-button-hover-border-color);
+    background-color: var(--ch-button-hover-bg-color);
+    outline: none;
+  }
+
+  &:active {
+    color: var(--ch-button-active-text-color);
+    border-color: var(--ch-button-active-border-color);
+    background-color: var(--ch-button-active-bg-color);
+    outline: none;
+  }
+
+  &.is-plain {
+    --ch-button-hover-text-color: var(--ch-color-primary);
+    --ch-button-hover-border-color: var(--ch-color-primary);
+    --ch-button-hover-bg-color: var(--ch-color-blank);
+  }
+
+  &.is-round {
+    border-radius: var(--ch-border-radius-round);
+  }
+
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+
+  &.is-disabled,
+  &.is-disabled:hover,
+  &.is-disabled:focus,
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: var(--ch-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--ch-button-disabled-bg-color);
+    border-color: var(--ch-button-disabled-border-color);
+  }
+}
+
+@each $type in primary, success, warning, danger, info {
+  .ch-button--$(type) {
+    /* default */
+    --ch-button-text-color: var(--ch-color-white);
+    --ch-button-bg-color: var(--ch-color-$(type));
+    --ch-button-border-color: var(--ch-color-$(type));
+    --ch-button-outline-color: var(--ch-color-$(type)-light-5);
+    /* hover */
+    --ch-button-hover-text-color: var(--ch-color-white);
+    --ch-button-hover-bg-color: var(--ch-color-$(type)-light-3);
+    --ch-button-hover-border-color: var(--ch-color-$(type)-light-3);
+    /* active */
+    --ch-button-active-color: var(--ch-color-$(type)-dark-2);
+    --ch-button-active-bg-color: var(--ch-color-$(type)-dark-2);
+    --ch-button-active-border-color: var(--ch-color-$(type)-dark-2);
+    /* disabled */
+    --ch-button-disabled-text-color: var(--ch-color-white);
+    --ch-button-disabled-bg-color: var(--ch-color-$(type)-light-5);
+    --ch-button-disabled-border-color: var(--ch-color-$(type)-light-5);
+  }
+
+  .ch-button--$(type).is-plain {
+    --ch-button-text-color: var(--ch-color-$(type));
+    --ch-button-bg-color: var(--ch-color-$(type)-light-9);
+    --ch-button-border-color: var(--ch-color-$(type)-light-5);
+
+    --ch-button-hover-text-color: var(--ch-color-white);
+    --ch-button-hover-bg-color: var(--ch-color-$(type));
+    --ch-button-hover-border-color: var(--ch-color-$(type));
+
+    --ch-button-active-text-color: var(--ch-color-white);
+  }
+}
+
+.ch-button--small {
+  --ch-button-size: 24px;
+  height: var(--ch-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--ch-border-radius-base) - 1px);
+}
+
+.ch-button--large {
+  --ch-button-size: 40px;
+  height: var(--ch-button-size);
+  padding: 12px 19px;
+  font-size: var(--ch-font-size-base);
+  border-radius: var(--ch-border-radius-base);
+}

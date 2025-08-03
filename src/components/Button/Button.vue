@@ -20,7 +20,7 @@ defineOptions({
 })
 
 withDefaults(defineProps<ButtonProps>(), {
-    type: 'primary',
+    // type: 'primary',
     size: 'small',
     plain: false,
     round: false,
@@ -37,8 +37,4 @@ defineExpose({
 })
 </script>
 
-<style>
-.ch-button {
-    background-color: var(--mian-bg-color);
-}
-</style>
+<style></style>
