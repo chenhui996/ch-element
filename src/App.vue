@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import Button from './components/Button/Button.vue';
 import type { ButtonInstance } from './components/Button/types';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import Collapse from './components/Collapse/Collapse.vue';
+import CollapseItem from './components/Collapse/CollapseItem.vue';
+import type { NameType } from './components/Collapse/type';
 
 const buttonRef = ref<ButtonInstance>();
-
+const collapseModelValue = ref<NameType[]>(['2']);
 onMounted(() => {
   console.log(buttonRef.value?.ref);
 })
@@ -36,6 +39,31 @@ onMounted(() => {
     <br />
     <Button size="small">small button</Button>
     <Button size="large">large button</Button>
+    <br />
+    <br />
+    <Collapse v-model="collapseModelValue" accordion>
+      <CollapseItem name="1" title="标题1">
+        <template #title>
+          <span>标题1</span>
+        </template>
+        <template #content>
+          <div>内容1</div>
+        </template>
+      </CollapseItem>
+      <CollapseItem name="2" title="标题2">
+        <template #title>
+          <span>标题2</span>
+        </template>
+        <template #content>
+          <div>内容2</div>
+        </template>
+      </CollapseItem>
+      <CollapseItem name="3" title="标题3" disabled>
+        <template #content>
+          <div>内容3</div>
+        </template>
+      </CollapseItem>
+    </Collapse>
   </main>
 </template>
 
